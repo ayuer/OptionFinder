@@ -1,142 +1,388 @@
-# 小红书 AI 工具小帮手 | Xiaohongshu AI Content Assistant
+# Option Finder - Yahoo Finance 期权分析工具
 
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285f4?style=flat-square&logo=google-chrome)](https://chrome.google.com/webstore)
-[![Version](https://img.shields.io/badge/version-1.0.0-brightgreen?style=flat-square)](https://github.com/your-username/xhs-ai-tool)
-[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
-[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+<div align="center">
+  <img src="src/assets/logo.png" alt="Option Finder Logo" width="120">
 
-> **专业的小红书内容创作 AI 助手** - 一款功能强大的 Chrome 浏览器扩展，专为小红书(Xiaohongshu)内容创作者设计。集成 OpenAI GPT、Claude、通义千问等主流 AI 大模型，智能生成高质量文案、标题和评论，提升内容创作效率。
+  **专业的 Yahoo Finance 期权链分析 Chrome 扩展**
 
-**关键词**: 小红书, AI 文案生成, Chrome 扩展, 内容创作, 智能写作, GPT, Claude, 通义千问, 社交媒体工具
+  [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
+  [![React](https://img.shields.io/badge/React-19.1-61dafb)](https://reactjs.org/)
+  [![Vite](https://img.shields.io/badge/Vite-7.0-646cff)](https://vitejs.dev/)
 
-**官方网站**: [https://mynotehelper.com/](https://mynotehelper.com/)
-
-📖 **中文文档** | 🌐 **[English Documentation](./README_EN.md)**
-
-### 📺 功能演示
-
-#### 📝 文案生成演示
-
-![文案生成演示](./materials/postNote_hq.gif)
-
-![自定义要求演示](./materials/custom_hq.gif)
-
-#### 💬 评论生成演示
-
-![评论生成演示](./materials/comment_hq.gif)
-
-## 📦 快速安装
-
-### 🏪 方式一：Chrome 应用商店（推荐）
-
-直接点击[小红书 AI 小帮手](https://chromewebstore.google.com/detail/%E5%B0%8F%E7%BA%A2%E4%B9%A6ai%E5%B0%8F%E5%B8%AE%E6%89%8B-%E5%B0%8F%E7%BA%A2%E4%B9%A6ai%E5%88%9B%E4%BD%9C%E5%8A%A9%E6%89%8B/jbgcgabaeechheccecbaphelkhgabkbp)
-
-或
-
-1. 打开 [Chrome Web Store](https://chrome.google.com/webstore)
-2. 搜索 **"小红书 AI 小帮手"**
-3. 点击 **"添加至 Chrome"** 完成安装
-4. 安装后图标会出现在浏览器工具栏
-
-### 💻 方式二：开发者本地安装
-
-1. **下载插件包**
-   点击下载 [安装包](https://github.com/XiaoruiWang-SH/xhs-ai-tool/raw/main/release/release.zip)
-
-2. **安装到 Chrome**
-   - 打开 Chrome 浏览器
-   - 地址栏输入 `chrome://extensions/`
-   - 右上角开启 **"开发者模式"**
-   - 点击 **"加载已解压的扩展程序"**
-   - 选择解压后的 `release` 文件夹（包含 manifest.json）
-   - 点击图标打开侧边栏开始使用
-
-## 🚀 核心功能特色
-
-### ✨ AI 智能内容生成
-
-- **📝 智能文案创作**：基于图片内容和用户输入，自动生成吸引眼球的小红书标题和正文
-- **💬 AI 评论助手**：智能分析小红书笔记内容，生成个性化、有价值的互动评论
-- **🎯 内容优化建议**：提供 SEO 友好的标题优化和内容结构建议
-
-### ⚡ 高效操作体验
-
-- **🔄 一键应用**：AI 生成内容可直接插入小红书编辑页面，无需复制粘贴
-- **📱 侧边栏集成**：Chrome 侧边栏设计，不干扰原有浏览体验
-- **⚙️ 自定义模板**：支持个性化提示词模板，适配不同创作风格
-
-### 🤖 多模型 AI 支持
-
-- **OpenAI GPT 系列**：支持 GPT-5，专业文案生成
-- **Claude Sonnet**：Anthropic Claude-4 模型，擅长创意内容创作
-- **通义千问**：阿里云 Qwen 模型，中文内容优化专家
-
-### 🔒 隐私安全保障
-
-- **本地存储**：API 密钥仅存储在本地浏览器，不上传服务器
-- **数据隐私**：图片和文本仅用于 AI 分析，不会被保存或分享
-- **合规使用**：完全遵守小红书平台使用条款和社区规范
-
-## 📖 详细使用教程
-
-### 🔧 首次配置
-
-1. **打开设置面板**
-
-   - 点击浏览器工具栏的 ⚙️ 图标
-   - 选择大模型
-   - 输入 api key
-
-2. **保存**
-
-### ✍️ 智能文案生成
-
-1. **访问小红书创作页面**
-
-   - 打开 [小红书](https://www.xiaohongshu.com) 并登录
-   - 点击"发布笔记"开始创作
-
-2. **上传图片并生成文案**
-
-   - 上传您的图片到小红书编辑器
-   - 点击扩展图标打开 AI 助手
-   - 选择合适的文案模板
-   - 点击"生成文案"等待 AI 创作
-   - 一键应用生成的标题和正文
-
-3. **自定义优化**
-   - 可以修改 AI 提示词模板
-   - 支持指定文案风格和长度
-   - 批量生成多个版本供选择
-
-### 💬 智能评论助手
-
-1. **浏览小红书内容**
-
-   - 打开任意小红书笔记页面
-   - AI 会自动识别页面内容（标题、图片、正文）
-
-2. **生成个性化评论**
-   - 在侧边栏中查看内容概览
-   - 选择评论风格（友好互动、专业建议、幽默搞笑等）
-   - 点击"生成评论"获得 AI 建议
-   - 复制或直接插入评论区
-
-### 🌟 支持项目
-
-如果这个项目对您有帮助，请考虑：
-
-- ⭐ 给项目点个 Star
-- 🔄 分享给更多朋友
-- 💡 提出改进建议
-- 🐛 报告使用问题
-
-### 免责声明:
-
-- 本工具仅供学习交流使用
-- 用户需自行承担使用风险
-- 请遵守相关平台服务条款
-- 生成内容的真实性由用户负责
+  [English](./README_EN.md) | 简体中文
+</div>
 
 ---
+
+## 📖 简介
+
+**Option Finder** 是一款专为期权交易者打造的 Chrome 浏览器扩展，能够智能分析 Yahoo Finance 期权链数据，通过 AI 驱动的量化分析帮助您发现高概率交易机会。
+
+### 核心价值
+
+- 🎯 **自动扫描** - 一键扫描整个期权链，无需手动浏览每个行权价
+- 📊 **可视化分析** - 多维度图表展示 OI、成交量、IV 和价格分布
+- 🤖 **AI 量化分析** - 支持 ChatGPT、Claude、Gemini 等多个 AI 模型生成专业分析报告
+- 💡 **智能筛选** - 基于 Delta、年化收益率等指标自动发现潜在机会
+- 📌 **候选池管理** - 跨股票对比分析，管理您的交易候选
+- 💾 **观察列表** - 保存重要的期权链数据，追踪价格变化
+
+---
+
+## ✨ 主要功能
+
+### 1. 一键智能扫描
+
+在 Yahoo Finance 期权页面点击扩展图标，即可自动提取：
+- 所有行权价的 Call/Put 数据
+- 持仓量 (Open Interest)
+- 成交量 (Volume)
+- 隐含波动率 (IV)
+- Bid/Ask 价格
+- Delta 值（自动计算）
+
+### 2. 多维度可视化图表
+
+提供四个专业图表：
+- **OI 分布图** - 识别支撑/阻力位和 Gamma 墙
+- **成交量分布** - 发现异常交易活动
+- **IV 曲线** - 分析波动率倾斜
+- **价格分布** - 对比 Bid/Ask 价差
+
+### 3. AI 量化分析
+
+一键生成专业分析报告，包括：
+- 市场情绪判断 (Bullish/Bearish/Neutral)
+- 关键观察点和异常数据
+- 支撑/阻力位分析
+- 交易策略建议
+
+支持的 AI 提供商：
+- OpenAI (ChatGPT)
+- Anthropic (Claude 3.5 Sonnet)
+- Google (Gemini 1.5/2.5/3)
+- 阿里巴巴通义千问
+
+### 4. 候选池 (Candidates Pool)
+
+跨股票对比潜在交易机会：
+- 按 Delta、年化收益率、DTE 筛选
+- 一键导航回 Yahoo Finance 查看详情
+- Pin 功能在图表上标记已保存的行权价
+- 支持删除和管理
+
+### 5. 观察列表 (Watchlist)
+
+保存重要的期权链快照：
+- 记录扫描时的标的价格
+- 保存 AI 分析结果
+- 支持手动设置估值价格
+- 拖拽排序
+- 一键恢复到扫描状态
+
+---
+
+## 🚀 安装指南
+
+### 方式一：从源码构建（推荐）
+
+1. **克隆仓库**
+   ```bash
+   git clone https://github.com/yourusername/option-finder.git
+   cd option-finder
+   ```
+
+2. **安装依赖**
+   ```bash
+   npm install
+   ```
+
+3. **构建扩展**
+   ```bash
+   npm run build
+   ```
+   构建完成后会在 `dist/` 目录生成扩展文件，并自动打包为 `dist.zip`
+
+4. **加载到 Chrome**
+   - 打开 Chrome 浏览器，访问 `chrome://extensions/`
+   - 启用右上角的 **开发者模式**
+   - 点击 **加载已解压的扩展程序**
+   - 选择项目中的 `dist` 文件夹
+
+### 方式二：安装 ZIP 包
+
+1. 下载最新的 `dist.zip` 发布包
+2. 解压到本地文件夹
+3. 在 Chrome 扩展管理页面加载解压后的文件夹
+
+---
+
+## 📚 使用教程
+
+### 第一步：配置 AI 模型
+
+1. 点击扩展图标打开侧边栏
+2. 点击首页的齿轮图标 ⚙️ 打开设置
+3. 选择您的 AI 提供商（ChatGPT/Claude/Gemini/通义千问）
+4. 输入对应的 API Key
+5. 点击保存
+
+> 💡 **获取 API Key:**
+> - ChatGPT: https://platform.openai.com/api-keys
+> - Claude: https://console.anthropic.com/settings/keys
+> - Gemini: https://aistudio.google.com/app/apikey
+> - 通义千问: https://dashscope.console.aliyun.com/apiKey
+
+### 第二步：扫描期权链
+
+1. 访问 Yahoo Finance 期权页面
+   - 例如: `https://finance.yahoo.com/quote/AAPL/options/`
+2. 选择期望的到期日期
+3. 点击 Chrome 工具栏的 Option Finder 图标
+4. 等待自动扫描完成（通常 2-5 秒）
+
+### 第三步：分析数据
+
+扫描完成后，您将看到：
+
+#### 📊 可视化图表
+- **OI Chart** - 持仓量分布，点击图表可固定 Tooltip
+- **Volume Chart** - 成交量分布
+- **IV Chart** - 隐含波动率曲线
+- **Price Chart** - Bid/Ask 价格对比
+
+#### 📌 Pin 功能
+- 直接点击图表上的 bar 或 line 即可添加到候选池
+- Pin 后的 Strike 会在 OI 图表上显示 📌 标记
+- 显示 Toast 通知，支持 Undo 撤销
+- 在候选池中统一管理和对比
+
+#### 🤖 生成 AI 分析
+1. 点击 **GENERATE QUANTITATIVE REPORT** 按钮
+2. AI 将分析整个期权链数据，生成报告
+3. 报告包括：情绪判断、关键观察、支撑/阻力位、交易建议
+
+#### 💾 保存到观察列表
+- 点击 **SAVE** 按钮保存当前期权链
+- 可选：输入您的估值价格（用于后续对比）
+- 保存后可在观察列表中管理
+
+---
+
+## 🎯 典型使用场景
+
+### 场景 1: 卖出 Cash-Secured Put
+
+**目标:** 寻找高年化收益的 Put 期权
+
+1. 扫描 40-60 天到期的期权链
+2. 查看图表，找到 Delta 在 -0.3 到 -0.2 之间的 Strike
+3. 直接点击图表上的 bar/line 添加到候选池
+4. 查看 OI 图判断该 Strike 是否有强支撑
+5. 生成 AI 分析，确认市场情绪和风险
+6. 在候选池中对比不同股票的机会
+7. 点击候选池中的行导航回 Yahoo Finance 下单
+
+### 场景 2: 识别 Gamma Squeeze 风险
+
+**目标:** 发现异常高的 OI 集中
+
+1. 扫描近期到期的期权链
+2. 观察 OI 图，寻找极高的 Call OI 墙
+3. 结合成交量图，查看是否有异常活动
+4. 生成 AI 分析，评估 Gamma 风险
+5. 保存到观察列表，追踪价格变化
+
+### 场景 3: 波动率交易
+
+**目标:** 发现 IV 异常
+
+1. 扫描多个股票的期权链
+2. 观察 IV 曲线，寻找倾斜或微笑
+3. 对比不同到期日的 IV 水平
+4. 使用 AI 分析潜在的事件驱动因素
+5. 在候选池中对比不同标的的 IV
+
+---
+
+## 🔧 技术架构
+
+### 技术栈
+
+- **前端框架:** React 19.1 + TypeScript 5.8
+- **UI 库:** Tailwind CSS 4.1
+- **图表库:** Recharts 3.6
+- **构建工具:** Vite 7.0 + @crxjs/vite-plugin
+- **AI SDK:** OpenAI SDK, Anthropic SDK
+- **Chrome API:** Manifest V3
+
+### 项目结构
+
+```
+option-finder/
+├── src/
+│   ├── assets/          # 图标和图片资源
+│   ├── components/      # React 组件
+│   │   ├── ChatInterface.tsx      # 主界面和图表
+│   │   ├── WatchlistPanel.tsx     # 观察列表
+│   │   ├── CandidatesDashboard.tsx # 候选池
+│   │   ├── SettingsPanel.tsx      # 设置面板
+│   │   └── Header.tsx             # 头部组件
+│   ├── services/        # 业务逻辑
+│   │   ├── AIService.ts           # AI 接口封装
+│   │   ├── OptionChainService.ts  # 期权链数据处理
+│   │   ├── WatchlistService.ts    # 观察列表管理
+│   │   ├── CandidatesService.ts   # 候选池管理
+│   │   └── messageTypes.ts        # TypeScript 类型定义
+│   ├── content/         # Content Scripts
+│   │   └── yahoo-finance.ts       # Yahoo Finance 数据抓取
+│   ├── service_worker.ts # Background Script
+│   ├── App.tsx          # 应用入口
+│   ├── main.tsx         # React 挂载
+│   └── index.css        # 全局样式
+├── public/              # 静态资源
+├── manifest.config.ts   # Chrome 扩展配置
+├── vite.config.ts       # Vite 配置
+└── package.json
+```
+
+### 数据流
+
+```
+Yahoo Finance 页面
+      ↓
+Content Script (抓取期权链数据)
+      ↓
+Service Worker (消息路由)
+      ↓
+Side Panel UI (展示和交互)
+      ↓
+AI Service (调用 AI 模型分析)
+      ↓
+LocalStorage (持久化存储)
+```
+
+---
+
+## ⚙️ 开发指南
+
+### 环境要求
+
+- Node.js >= 18
+- npm >= 9
+- Chrome/Edge 浏览器 >= 120
+
+### 开发模式
+
+```bash
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run dev
+
+# 在 Chrome 中加载 dist 目录
+# 修改代码后会自动热重载
+```
+
+### 构建生产版本
+
+```bash
+# 构建并打包
+npm run build
+
+# 产物在 dist/ 目录
+# dist.zip 可直接分发
+```
+
+### 代码规范
+
+```bash
+# 运行 ESLint 检查
+npm run lint
+```
+
+---
+
+## 📊 功能对比
+
+| 功能 | Option Finder | Yahoo Finance 原生 |
+|------|---------------|-------------------|
+| 期权链数据展示 | ✅ | ✅ |
+| OI/Volume 图表 | ✅ | ❌ |
+| Delta 自动计算 | ✅ | ❌ |
+| AI 量化分析 | ✅ | ❌ |
+| 跨股票对比 | ✅ | ❌ |
+| 观察列表 | ✅ | ❌ |
+| Pin 标记功能 | ✅ | ❌ |
+| 年化收益计算 | ✅ | ❌ |
+
+---
+
+## 🛡️ 隐私与安全
+
+- ✅ **本地处理** - 所有数据处理在本地完成
+- ✅ **零数据上传** - 不会向第三方服务器发送您的交易数据
+- ✅ **API Key 安全** - API Key 仅存储在本地 Chrome Storage
+- ✅ **开源透明** - 全部代码开源，可审计
+
+**AI 服务调用:**
+- Option Finder 仅在您点击"生成报告"时调用 AI API
+- 发送的数据仅包括期权链的统计数据（OI、Volume、Strike 等）
+- 不包含您的个人信息或账户信息
+
+详见 [隐私政策](./PRIVACY_POLICY.md)
+
+---
+
+## 🤝 贡献指南
+
+欢迎贡献代码、报告 Bug 或提出功能建议！
+
+1. Fork 本仓库
+2. 创建您的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启一个 Pull Request
+
+---
+
+## 📝 更新日志
+
+### v1.0.0 (2026-01-02)
+- 🎉 初始发布
+- ✅ Yahoo Finance 期权链自动扫描
+- ✅ OI/Volume/IV/Price 四维图表
+- ✅ AI 量化分析（支持 ChatGPT/Claude/Gemini/通义千问）
+- ✅ 候选池跨股票对比
+- ✅ 观察列表管理
+- ✅ Pin 功能和图表标记
+- ✅ Delta 和年化收益自动计算
+
+---
+
+## 📄 许可证
+
+本项目采用 [MIT License](./LICENSE) 开源。
+
+---
+
+## 🙏 致谢
+
+- [Yahoo Finance](https://finance.yahoo.com/) - 提供免费的期权数据
+- [Recharts](https://recharts.org/) - 优秀的 React 图表库
+- [OpenAI](https://openai.com/) / [Anthropic](https://anthropic.com/) / [Google](https://ai.google/) - AI 能力支持
+
+---
+
+## 📮 联系方式
+
+- **Issues:** [GitHub Issues](https://github.com/yourusername/option-finder/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/yourusername/option-finder/discussions)
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ for options traders</sub>
+</div>

@@ -1,0 +1,274 @@
+@import 'tailwindcss';
+
+:root {
+  /* Primary Brand Colors - Blue Theme */
+  --primary-blue: #2563eb;
+  --primary-blue-hover: #1d4ed8;
+  --primary-blue-light: #dbeafe;
+
+  /* Neutral Colors */
+  --neutral-900: #1a1a1a;
+  --neutral-700: #4a4a4a;
+  --neutral-500: #6b7280;
+  --neutral-300: #d1d5db;
+  --neutral-100: #f3f4f6;
+  --neutral-50: #f9fafb;
+
+  /* Semantic Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #3b82f6;
+
+  /* Chrome Extension Specific */
+  --chrome-bg: #ffffff;
+  --chrome-border: #e5e7eb;
+  --chrome-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Design System Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  /* Mapped to existing variables for compatibility */
+  --background: var(--chrome-bg);
+  --surface: var(--neutral-50);
+  --primary: var(--primary-blue);
+  --primary-hover: var(--primary-blue-hover);
+  --primary-active: var(--primary-blue-hover);
+  --secondary: var(--neutral-500);
+  --text: var(--neutral-900);
+  --text-muted: var(--neutral-700);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --surface: #1e293b;
+    --primary: #60a5fa;
+    --primary-hover: #1d4ed8;
+    --primary-active: #2563eb;
+    --secondary: #94a3b8;
+    --text: #f8fafc;
+    --text-muted: #cbd5e1;
+    --success: #4ade80;
+    --error: #f87171;
+    --warning: #fbbf24;
+    --info: #38bdf8;
+  }
+}
+
+@theme inline {
+  /* Color utilities - following --color-_ namespace */
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-blue-hover: var(--primary-blue-hover);
+  --color-primary-blue-light: var(--primary-blue-light);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-50: var(--neutral-50);
+  --color-chrome-bg: var(--chrome-bg);
+  --color-chrome-border: var(--chrome-border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+
+  /* Font utilities - following --font-_ namespace */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+
+  /* Text size utilities - following --text-_ namespace */
+  --text-display: 22px;
+  --text-title: 18px;
+  --text-body: 16px;
+  --text-caption: 14px;
+  --text-micro: 13px;
+
+  /* Standard Tailwind overrides (+2px) */
+  --text-xs: 14px;
+  --text-sm: 16px;
+  --text-base: 18px;
+  --text-lg: 20px;
+  --text-xl: 22px;
+  --text-2xl: 26px;
+  --text-3xl: 32px;
+
+  /* Font weight utilities - following --font-weight-_ namespace */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter spacing utilities - following --tracking-_ namespace */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.01em;
+  --tracking-wider: 0.02em;
+
+  /* Line height utilities - following --leading-_ namespace */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+
+  /* Spacing utilities - following --spacing-_ namespace */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+
+  /* Border radius utilities - following --radius-_ namespace */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Shadow utilities - following --shadow-_ namespace */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-lg: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+}
+
+@layer base {
+  body {
+    background-color: var(--chrome-bg);
+    color: var(--neutral-900);
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+/* Custom animation keyframes for attention-grabbing effects */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 36, 66, 0.1), 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 36, 66, 0.05), 0 8px 15px rgba(255, 36, 66, 0.1), 0 4px 8px rgba(0,0,0,0.1);
+  }
+}
+
+@keyframes pulse-glow-blue {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.1), 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(59, 130, 246, 0.05), 0 8px 15px rgba(59, 130, 246, 0.1), 0 4px 8px rgba(0,0,0,0.1);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(32px);
+    opacity: 0;
+    scale: 0.95;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes notification-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Custom animation utilities */
+@layer utilities {
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow-blue {
+    animation: pulse-glow-blue 3s ease-in-out infinite;
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .animate-notification-pulse {
+    animation: notification-pulse 2s ease-in-out infinite;
+  }
+  
+  .animation-delay-75 {
+    animation-delay: 75ms;
+  }
+  
+  .animation-delay-150 {
+    animation-delay: 150ms;
+  }
+
+  /* Custom tooltip styles for Chrome Extension */
+  [title] {
+    position: relative;
+  }
+
+  [title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 10000;
+    pointer-events: none;
+    animation: tooltip-fade-in 0.2s ease-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  [title]:hover::before {
+    content: '';
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    pointer-events: none;
+    animation: tooltip-fade-in 0.2s ease-out;
+  }
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
