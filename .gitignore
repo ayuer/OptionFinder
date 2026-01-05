@@ -27,3 +27,4 @@ UI-UX-DESIGN-SPEC.md
 *.njsproj
 *.sln
 *.sw?
+/release/release

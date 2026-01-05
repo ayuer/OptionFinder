@@ -351,12 +351,41 @@ const CollectedOptionChainDisplay: React.FC<{
   const [toastMessage, setToastMessage] = useState('');
   const [lastPinnedId, setLastPinnedId] = useState<string | null>(null);
   const [pinnedStrikes, setPinnedStrikes] = useState<number[]>([]);
+  const [chartsReady, setChartsReady] = useState(false);
   const toastTimeoutRef = React.useRef<number | null>(null);
+  const chartContainerRef = React.useRef<HTMLDivElement | null>(null);
 
   const itmStrikes = chartData.filter(d => d.inTheMoney).map(d => d.strike);
   const itmStart = itmStrikes.length > 0 ? Math.min(...itmStrikes) : null;
   const itmEnd = itmStrikes.length > 0 ? Math.max(...itmStrikes) : null;
   const ITM_COLOR = "rgb(20, 71, 102)";
+
+  // Wait for container to have valid dimensions before rendering charts
+  useEffect(() => {
+    if (!chartContainerRef.current) {
+      // Fallback: if ref not set, just delay
+      const timer = setTimeout(() => setChartsReady(true), 150);
+      return () => clearTimeout(timer);
+    }
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.contentRect.width > 0 && entry.contentRect.height > 0) {
+          setChartsReady(true);
+        }
+      }
+    });
+
+    observer.observe(chartContainerRef.current);
+
+    // Fallback timeout in case ResizeObserver doesn't fire
+    const fallbackTimer = setTimeout(() => setChartsReady(true), 300);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(fallbackTimer);
+    };
+  }, []);
 
   // Load pinned strikes for current context and listen for updates
   useEffect(() => {
@@ -652,10 +681,10 @@ const CollectedOptionChainDisplay: React.FC<{
           </div>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-6" ref={chartContainerRef}>
           <div className="relative h-[160px]">
             <div className="absolute top-2 left-10 z-10 text-[10px] font-black text-neutral-400 uppercase tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-neutral-100/50 shadow-sm">Open Interest</div>
-            <ResponsiveContainer width="100%" height="100%">
+            {chartsReady && <ResponsiveContainer width="100%" height={160}>
               <BarChart
                 data={chartData}
                 syncId="option-chain"
@@ -707,12 +736,12 @@ const CollectedOptionChainDisplay: React.FC<{
                   style={{ cursor: 'pointer' }}
                 />
               </BarChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer>}
           </div>
 
           <div className="relative h-[160px]">
             <div className="absolute top-2 left-10 z-10 text-[10px] font-black text-neutral-400 uppercase tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-neutral-100/50 shadow-sm">Volume</div>
-            <ResponsiveContainer width="100%" height="100%">
+            {chartsReady && <ResponsiveContainer width="100%" height={160}>
               <BarChart
                 data={chartData}
                 syncId="option-chain"
@@ -737,12 +766,12 @@ const CollectedOptionChainDisplay: React.FC<{
                   style={{ cursor: 'pointer' }}
                 />
               </BarChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer>}
           </div>
 
           <div className="relative h-[160px]">
             <div className="absolute top-2 left-10 z-10 text-[10px] font-black text-neutral-400 uppercase tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-neutral-100/50 shadow-sm">Implied Volatility</div>
-            <ResponsiveContainer width="100%" height="100%">
+            {chartsReady && <ResponsiveContainer width="100%" height={160}>
               <LineChart
                 data={chartData}
                 syncId="option-chain"
@@ -770,12 +799,12 @@ const CollectedOptionChainDisplay: React.FC<{
                   style={{ cursor: 'pointer' }}
                 />
               </LineChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer>}
           </div>
 
           <div className="relative h-[200px]">
             <div className="absolute top-2 left-10 z-10 text-[10px] font-black text-neutral-400 uppercase tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-neutral-100/50 shadow-sm">Price / % Change</div>
-            <ResponsiveContainer width="100%" height="100%">
+            {chartsReady && <ResponsiveContainer width="100%" height={200}>
               <ComposedChart
                 data={chartData}
                 syncId="option-chain"
@@ -803,7 +832,7 @@ const CollectedOptionChainDisplay: React.FC<{
                   ))}
                 </Bar>
               </ComposedChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer>}
           </div>
         </div>
 
@@ -1108,7 +1137,7 @@ export const ChatInterface: React.FC<{ onSettingsClick?: () => void }> = ({ onSe
             type: 'error',
             sender: 'system',
             timestamp: new Date(),
-            content: 'Unable to scan option chain data. The page may still be loading, or the option table is not visible.',
+            content: 'Unable to scan option chain data. The page may still be loading, or the option table is not visible. Please reload the Yahoo Finance Page and try scan again.',
           }
         });
       }
